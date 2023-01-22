@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Pokemon App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключаем скрипт от телеграм-->
+    <script src="main.js"/>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+  </head>
+  <body>
+<form id="main" v-cloak>
+
+    <div class="bar">
+        <!-- Создает связь мужду моделью searchString model и текстовым полем -->
+
+        <input type="text" v-model="searchString" placeholder="Введите название статьи" />
+    </div>
+
+    <ul>
+        <!-- Рендерится li под каждый элемент массива filteredArticles. -->
+             
+        <li v-for="article in filteredArticles">
+            <a v-bind:href="article.url"><img v-bind:src="article.image" /></a>
+            <p>{{article.title}}</p>
+        </li>
+    </ul>
+
+</form>
+  </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
+<script>
+   let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
+   tg.expand(); //расширяем на все окно  
+   tg.MainButton.text = "Закрыть"; //изменяем текст кнопки 
+</script>
+
+</html>
